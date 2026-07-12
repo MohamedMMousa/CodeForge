@@ -1,0 +1,486 @@
+@page
+@model IndexModel
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment WebHostEnvironment
+@{
+    ViewData["Title"] = "CodeForge Academy";
+
+    // Auto-detect logo files in wwwroot/images/
+    string? resolvedLogoUrl = null;
+    var extensions = new[] { "svg", "png", "jpg", "jpeg", "webp" };
+    foreach (var ext in extensions)
+    {
+        var relativePath = $"images/logo.{ext}";
+        var absolutePath = System.IO.Path.Combine(WebHostEnvironment.WebRootPath ?? "", relativePath);
+        if (System.IO.File.Exists(absolutePath))
+        {
+            resolvedLogoUrl = relativePath;
+            break;
+        }
+    }
+}
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+    <div class="container navbar-inner">
+        <a href="#" class="navbar-logo">
+            @if (resolvedLogoUrl != null)
+            {
+                <img src="~/@resolvedLogoUrl" alt="CodeForge Logo" style="height: 60px; width: auto; margin-rights: var(--space-3);" />
+            }
+           
+            <span class="navbar-logo-text">CodeForge</span>
+        </a>
+
+        <div class="navbar-links">
+            <a href="#features" class="navbar-link" data-i18n="navFeatures">What We Teach</a>
+            <a href="#courses" class="navbar-link" data-i18n="navCourses">Programs</a>
+            <a href="#how-it-works" class="navbar-link" data-i18n="navHowItWorks">How It Works</a>
+            <a href="#results" class="navbar-link" data-i18n="navResults">Results</a>
+            <a href="#about" class="navbar-link" data-i18n="navAbout">About Us</a>
+        </div>
+
+        <div class="navbar-actions">
+            <div class="lang-toggle">
+                <button class="lang-toggle-btn active" data-lang="ar">عربي</button>
+                <button class="lang-toggle-btn" data-lang="en">EN</button>
+            </div>
+            <a href="#" class="btn btn-primary" data-whatsapp data-i18n="navCta">Register Now</a>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+    <a href="#features" class="navbar-link" data-i18n="navFeatures">What We Teach</a>
+    <a href="#courses" class="navbar-link" data-i18n="navCourses">Programs</a>
+    <a href="#how-it-works" class="navbar-link" data-i18n="navHowItWorks">How It Works</a>
+    <a href="#results" class="navbar-link" data-i18n="navResults">Results</a>
+    <a href="#about" class="navbar-link" data-i18n="navAbout">About Us</a>
+    <a href="#" class="btn btn-primary btn-lg" data-whatsapp data-i18n="navCta" style="margin-top: var(--space-4);">Register Now</a>
+</div>
+
+<!-- ── HERO SECTION ── -->
+<header class="hero">
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-grid"></div>
+    <div class="container hero-content">
+        <div class="hero-text reveal">
+            <div class="hero-eyebrow" data-i18n="heroEyebrow">🚀 Registration is now open</div>
+            <h1 class="hero-title">
+                <span data-i18n="heroTitle1">Don't just learn technology.</span><br/>
+                <span class="highlight" data-i18n="heroTitle2">Build it.</span>
+            </h1>
+            <p class="hero-subtitle" data-i18n="heroSubtitle">A specialized academy teaching Programming & AI to teenagers aged 15–18 through real projects and live classes.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary btn-lg" data-whatsapp data-i18n="heroCta1">Register Now</a>
+                <a href="#features" class="btn btn-secondary btn-lg" data-i18n="heroCta2">Learn More</a>
+            </div>
+        </div>
+
+        <div class="hero-visual reveal" style="transition-delay: 200ms;">
+            <div class="code-window">
+                <div class="code-window-header">
+                    <span class="code-window-dot red"></span>
+                    <span class="code-window-dot yellow"></span>
+                    <span class="code-window-dot green"></span>
+                    <span class="code-window-title">codeforge_academy.py</span>
+                </div>
+                <div class="code-window-body">
+                    <span class="code-line"><span class="code-keyword">import</span> academy, artificial_intelligence</span>
+                    <span class="code-line"><span class="code-keyword">class</span> <span class="code-function">TeenStudent</span><span class="code-bracket">(</span>academy.Student<span class="code-bracket">)</span>:</span>
+                    <span class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">learn_to_code</span><span class="code-bracket">(</span>self<span class="code-bracket">)</span>:</span>
+                    <span class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.build_projects<span class="code-bracket">(</span><span class="code-string">"AI Chatbot"</span><span class="code-bracket">)</span></span>
+                    <span class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.create_future<span class="code-bracket">(</span><span class="code-bracket">)</span></span>
+                    <span class="code-line"><span class="code-comment"># CodeForge Academy - 15 to 18 Years Old</span></span>
+                    <span class="code-line">student = TeenStudent<span class="code-bracket">(</span>age=16<span class="code-bracket">)</span></span>
+                    <span class="code-line">student.learn_to_code<span class="code-bracket">(</span><span class="code-bracket">)</span></span>
+                    <span class="code-line"><span class="code-keyword">print</span><span class="code-bracket">(</span><span class="code-string">"Ready to build real technology!"</span><span class="code-bracket">)</span></span>
+                </div>
+            </div>
+            <!-- Floating Badges -->
+            <div class="floating-badge floating-badge-1">
+                <span class="code-orange">&lt;/&gt;</span> Python
+            </div>
+            <div class="floating-badge floating-badge-2">
+                <span class="code-orange">🧠</span> AI & ML
+            </div>
+            <div class="floating-badge floating-badge-3">
+                <span class="code-orange">🌐</span> Web Dev
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ── WHAT WE TEACH SECTION ── -->
+<section id="features" class="section">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-badge" data-i18n="featuresBadge">What We Teach</span>
+            <h2 class="section-title" data-i18n="featuresTitle">Three Paths to Build the Future</h2>
+            <p class="section-subtitle" data-i18n="featuresSubtitle">We focus on the most in-demand technical skills in the global job market</p>
+        </div>
+
+        <div class="grid-3 reveal-stagger">
+            <!-- Feature 1: AI -->
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/>
+                    </svg>
+                </div>
+                <h3 class="card-title" data-i18n="feature1Title">Artificial Intelligence</h3>
+                <p class="card-description" data-i18n="feature1Desc">Learn the fundamentals of machine learning, neural networks, and build real AI projects using Python.</p>
+            </div>
+
+            <!-- Feature 2: Programming -->
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"/>
+                        <polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                </div>
+                <h3 class="card-title" data-i18n="feature2Title">Programming</h3>
+                <p class="card-description" data-i18n="feature2Desc">From zero to building real applications — Python, web development, and problem solving.</p>
+            </div>
+
+            <!-- Feature 3: Software Dev -->
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                        <polyline points="2 17 12 22 22 17"/>
+                        <polyline points="2 12 12 17 22 12"/>
+                    </svg>
+                </div>
+                <h3 class="card-title" data-i18n="feature3Title">Software Development</h3>
+                <p class="card-description" data-i18n="feature3Desc">Real-world projects using industry tools: Git, databases, teamwork, and best practices.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── HOW IT WORKS SECTION ── -->
+<section id="how-it-works" class="section section-alt">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-badge" data-i18n="howBadge">How It Works</span>
+            <h2 class="section-title" data-i18n="howTitle">Start Your Journey in Three Steps</h2>
+            <p class="section-subtitle" data-i18n="howSubtitle">A simple and fast registration process</p>
+        </div>
+
+        <div class="steps-wrapper reveal-stagger">
+            <!-- Step 1 -->
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <h3 class="step-title" data-i18n="step1Title">Register via WhatsApp</h3>
+                <p class="step-description" data-i18n="step1Desc">Contact us on WhatsApp and we'll respond within 24 hours</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <h3 class="step-title" data-i18n="step2Title">Join Your Cohort</h3>
+                <p class="step-description" data-i18n="step2Desc">We assess your level and match you with a live group and professional instructors</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <h3 class="step-title" data-i18n="step3Title">Start Building</h3>
+                <p class="step-description" data-i18n="step3Desc">Begin your journey building real projects with your team</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── COURSES SECTION ── -->
+<section id="courses" class="section">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-badge" data-i18n="coursesBadge">Programs</span>
+            <h2 class="section-title" data-i18n="coursesTitle">Our Specialized Programs</h2>
+            <p class="section-subtitle" data-i18n="coursesSubtitle">Programs designed specifically for teenagers with focus on hands-on application</p>
+        </div>
+
+        <div class="grid-2 reveal-stagger">
+            <!-- Course 1 -->
+            <div class="course-card">
+                <div class="course-card-header">
+                    <div class="course-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title" data-i18n="course1Title">Python Foundations</h3>
+                        <div class="course-card-meta">
+                            <span class="badge" data-i18n="course1Age">15-16 years</span>
+                            <span class="badge badge-orange" data-i18n="course1Duration">12 weeks</span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="course-card-topics" data-i18n-list="course1Topics"></ul>
+                <a href="#" class="btn btn-primary" data-whatsapp data-i18n="coursesCta">Register Now</a>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="course-card">
+                <div class="course-card-header">
+                    <div class="course-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title" data-i18n="course2Title">Web Development</h3>
+                        <div class="course-card-meta">
+                            <span class="badge" data-i18n="course2Age">15-18 years</span>
+                            <span class="badge badge-orange" data-i18n="course2Duration">16 weeks</span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="course-card-topics" data-i18n-list="course2Topics"></ul>
+                <a href="#" class="btn btn-primary" data-whatsapp data-i18n="coursesCta">Register Now</a>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="course-card">
+                <div class="course-card-header">
+                    <div class="course-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="9"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            <path d="M2 12h20"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title" data-i18n="course3Title">Artificial Intelligence</h3>
+                        <div class="course-card-meta">
+                            <span class="badge" data-i18n="course3Age">16-18 years</span>
+                            <span class="badge badge-orange" data-i18n="course3Duration">16 weeks</span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="course-card-topics" data-i18n-list="course3Topics"></ul>
+                <a href="#" class="btn btn-primary" data-whatsapp data-i18n="coursesCta">Register Now</a>
+            </div>
+
+            <!-- Course 4 -->
+            <div class="course-card">
+                <div class="course-card-header">
+                    <div class="course-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title" data-i18n="course4Title">App Development</h3>
+                        <div class="course-card-meta">
+                            <span class="badge" data-i18n="course4Age">16-18 years</span>
+                            <span class="badge badge-orange" data-i18n="course4Duration">20 weeks</span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="course-card-topics" data-i18n-list="course4Topics"></ul>
+                <a href="#" class="btn btn-primary" data-whatsapp data-i18n="coursesCta">Register Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── RESULTS / SOCIAL PROOF ── -->
+<section id="results" class="section section-alt">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-badge" data-i18n="resultsBadge">Results</span>
+            <h2 class="section-title" data-i18n="resultsTitle">Numbers That Speak</h2>
+            <p class="section-subtitle" data-i18n="resultsSubtitle">Real results from our students</p>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="stats-grid reveal">
+            <div class="stat-item">
+                <div class="stat-number count-up" data-i18n="stat1Number">+200</div>
+                <div class="stat-label" data-i18n="stat1Label">Students Enrolled</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number count-up" data-i18n="stat2Number">+50</div>
+                <div class="stat-label" data-i18n="stat2Label">Projects Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number count-up" data-i18n="stat3Number">95%</div>
+                <div class="stat-label" data-i18n="stat3Label">Parent Satisfaction</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number count-up" data-i18n="stat4Number">4.9</div>
+                <div class="stat-label" data-i18n="stat4Label">Student Rating</div>
+            </div>
+        </div>
+
+        <!-- Outcome Highlights -->
+        <div class="outcomes-grid reveal-stagger">
+            <div class="outcome-card">
+                <div class="outcome-icon">🚀</div>
+                <h4 class="outcome-title" data-i18n="outcome1Title">Real Projects</h4>
+                <p class="outcome-text" data-i18n="outcome1Text">Our students build chatbots, websites, and real AI applications during the program.</p>
+            </div>
+            <div class="outcome-card">
+                <div class="outcome-icon">💻</div>
+                <h4 class="outcome-title" data-i18n="outcome2Title">Job-Ready Skills</h4>
+                <p class="outcome-text" data-i18n="outcome2Text">Students learn tools and technologies used by major tech companies worldwide.</p>
+            </div>
+            <div class="outcome-card">
+                <div class="outcome-icon">🎓</div>
+                <h4 class="outcome-title" data-i18n="outcome3Title">Certified Completion</h4>
+                <p class="outcome-text" data-i18n="outcome3Text">Every student receives a certified completion certificate after finishing the program and capstone project.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── ABOUT SECTION ── -->
+<section id="about" class="section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text-block reveal">
+                <span class="section-badge" data-i18n="aboutBadge">About Us</span>
+                <h2 class="about-title" data-i18n="aboutTitle">Building the Future Tech Generation</h2>
+                <p class="about-description" data-i18n="aboutDesc">CodeForge Academy is an Egyptian academy specializing in teaching programming and AI to teenagers. We believe every teenager can become an innovator in the world of technology.</p>
+            </div>
+
+            <div class="about-features-grid reveal-stagger">
+                <!-- Feature 1 -->
+                <div class="about-feature">
+                    <div class="about-feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="about-feature-title" data-i18n="aboutF1Title">Live Classes</h4>
+                        <p class="about-feature-text" data-i18n="aboutF1Text">Interactive learning with professional instructors</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="about-feature">
+                    <div class="about-feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="about-feature-title" data-i18n="aboutF2Title">Small Groups</h4>
+                        <p class="about-feature-text" data-i18n="aboutF2Text">Personal attention for every student</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="about-feature">
+                    <div class="about-feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="about-feature-title" data-i18n="aboutF3Title">Real Projects</h4>
+                        <p class="about-feature-text" data-i18n="aboutF3Text">Hands-on learning through building</p>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="about-feature">
+                    <div class="about-feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="about-feature-title" data-i18n="aboutF4Title">Safe Environment</h4>
+                        <p class="about-feature-text" data-i18n="aboutF4Text">Trusted and monitored platform for parents' peace of mind</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+    <div class="container footer-grid">
+        <div>
+            <a href="#" class="navbar-logo">
+                @if (resolvedLogoUrl != null)
+                {
+                    <img src="~/@resolvedLogoUrl" alt="CodeForge Logo" style="height: 42px; width: auto; margin-inline-end: var(--space-3);" />
+                }
+                
+                <span class="navbar-logo-text">CodeForge</span>
+            </a>
+            <p class="footer-brand-desc" data-i18n="footerDesc">An Egyptian academy specializing in teaching programming and AI to teenagers aged 15 to 18.</p>
+        </div>
+
+        <div>
+            <h4 class="footer-heading" data-i18n="footerLinksTitle">Quick Links</h4>
+            <a href="#features" class="footer-link" data-i18n="navFeatures">What We Teach</a>
+            <a href="#courses" class="footer-link" data-i18n="navCourses">Programs</a>
+            <a href="#how-it-works" class="footer-link" data-i18n="navHowItWorks">How It Works</a>
+            <a href="#about" class="footer-link" data-i18n="navAbout">About Us</a>
+        </div>
+
+        <div>
+            <h4 class="footer-heading" data-i18n="footerContactTitle">Contact Us</h4>
+            <span class="footer-link" data-i18n="footerEmail">info@codeforge.academy</span>
+            <a href="#" class="footer-link" data-whatsapp data-i18n="footerPhone">WhatsApp</a>
+            <span class="footer-link" data-i18n="footerLocation">Egypt</span>
+        </div>
+
+        <div>
+            <h4 class="footer-heading" data-i18n="footerSocialTitle">Follow Us</h4>
+            <div class="footer-social">
+                <a href="#" class="footer-social-link" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                </a>
+                <a href="#" class="footer-social-link" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container footer-bottom">
+        <div class="footer-copyright" data-i18n="footerCopyright">© 2026 CodeForge Academy. All rights reserved.</div>
+    </div>
+</footer>
+
+<!-- ── WHATSAPP FLOATING BUTTON ── -->
+<a href="#" class="whatsapp-float" data-whatsapp target="_blank" rel="noopener">
+    <div class="whatsapp-pulse"></div>
+    <div class="whatsapp-float-inner">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.428 2.026 13.968 1 11.4 1c-5.408 0-9.813 4.358-9.817 9.78-.002 1.81.49 3.57 1.42 5.148l-.946 3.454 3.57-.927zm10.743-6.224c-.29-.145-1.716-.848-1.982-.945-.266-.096-.46-.145-.654.145-.193.29-.75.946-.919 1.139-.17.194-.339.218-.63.073-.29-.145-1.226-.452-2.336-1.442-.864-.77-1.447-1.72-1.616-2.011-.17-.29-.018-.447.127-.592.13-.13.29-.339.435-.508.145-.17.193-.29.29-.484.096-.193.048-.363-.024-.508-.073-.145-.654-1.573-.896-2.153-.235-.568-.475-.491-.654-.5h-.56c-.193 0-.508.073-.774.363-.266.29-1.016.992-1.016 2.42 0 1.428 1.04 2.806 1.185 2.999.145.193 2.046 3.125 4.958 4.382.692.299 1.233.478 1.654.611.696.222 1.33.19 1.83.116.557-.081 1.716-.701 1.958-1.378.242-.677.242-1.258.17-1.378-.073-.12-.266-.193-.557-.339z"/>
+        </svg>
+        <span class="whatsapp-float-text" data-i18n="whatsappText">Chat with us</span>
+    </div>
+</a>
