@@ -3,21 +3,128 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CodeForge Academy — ابنِ المستقبل بالتكنولوجيا</title>
-    <meta name="description" content="أكاديمية مصرية متخصصة في تعليم البرمجة والذكاء الاصطناعي للمراهقين من ١٥ إلى ١٨ سنة. حصص مباشرة، مشاريع حقيقية، ومدربين محترفين." />
-    <meta name="keywords" content="CodeForge Academy, programming, AI, teenagers, Egypt, coding, أكاديمية, برمجة, ذكاء اصطناعي, مراهقين" />
-    <meta property="og:title" content="CodeForge Academy — ابنِ المستقبل بالتكنولوجيا" />
-    <meta property="og:description" content="أكاديمية مصرية متخصصة في تعليم البرمجة والذكاء الاصطناعي للمراهقين." />
+    <title>CodeForge Academy — تعليم البرمجة للمراهقين بمشاريع حقيقية</title>
+    <meta name="description" content="أكاديمية مصرية أونلاين تعلّم المراهقين من ١٣ إلى ١٨ سنة بناء البرمجيات من خلال مشاريع حقيقية — حصص مباشرة، مجموعات صغيرة، ومدربون محترفون." />
+    <meta property="og:title" content="CodeForge Academy — ابنِ برمجيات حقيقية، مش مجرد مهارات" />
+    <meta property="og:description" content="أكاديمية برمجة أونلاين للمراهقين من ١٣ إلى ١٨ سنة في مصر. تعلّم قائم على المشاريع، حصص مباشرة، ومعرض أعمال حقيقي." />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_EG" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:image" content="/images/logo.png" />
+    <!-- TODO: set og:url + canonical once the production domain is known -->
+    <meta name="twitter:card" content="summary" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-    <!-- Fonts -->
+    <!-- Resolve theme before first paint to avoid a flash -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('codeforge-theme');
+          if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Fonts (trimmed to the weights actually used) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CodeForge Academy",
+      "description": "أكاديمية مصرية أونلاين تعلّم المراهقين من ١٣ إلى ١٨ سنة بناء البرمجيات من خلال مشاريع حقيقية.",
+      "email": "info@codeforge.academy",
+      "logo": "/images/logo.png",
+      "areaServed": "EG"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "Course",
+          "position": 1,
+          "name": "أساسيات بايثون",
+          "description": "برنامج ١٢ أسبوعاً للمبتدئين من ١٣ إلى ١٥ سنة: أساسيات البرمجة بلغة بايثون من خلال مشاريع حقيقية.",
+          "provider": { "@type": "Organization", "name": "CodeForge Academy" }
+        },
+        {
+          "@type": "Course",
+          "position": 2,
+          "name": "تطوير المواقع",
+          "description": "برنامج ١٦ أسبوعاً من ١٤ إلى ١٦ سنة: HTML وCSS وJavaScript وبناء مواقع تفاعلية منشورة على الإنترنت.",
+          "provider": { "@type": "Organization", "name": "CodeForge Academy" }
+        },
+        {
+          "@type": "Course",
+          "position": 3,
+          "name": "الباك إند وقواعد البيانات",
+          "description": "برنامج ١٦ أسبوعاً من ١٥ إلى ١٧ سنة: بناء الخوادم والـ APIs وقواعد البيانات بـ Node.js وSQL.",
+          "provider": { "@type": "Organization", "name": "CodeForge Academy" }
+        },
+        {
+          "@type": "Course",
+          "position": 4,
+          "name": "مدخل إلى الذكاء الاصطناعي",
+          "description": "برنامج ١٦ أسبوعاً من ١٦ إلى ١٨ سنة: تعلّم الآلة وبناء شات بوت ومصنّف صور ولوحات تحليل بيانات.",
+          "provider": { "@type": "Organization", "name": "CodeForge Academy" }
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "كم تكلفة البرامج وكيف يتم الدفع؟",
+          "acceptedAnswer": { "@type": "Answer", "text": "تختلف التكلفة حسب البرنامج ومدته، ونوفر خطط تقسيط مرنة. تواصل معنا عبر واتساب وسنرسل لك تفاصيل الأسعار كاملة خلال ٢٤ ساعة." }
+        },
+        {
+          "@type": "Question",
+          "name": "ما الأجهزة المطلوبة للدراسة؟",
+          "acceptedAnswer": { "@type": "Answer", "text": "جهاز كمبيوتر أو لابتوب عادي مع اتصال إنترنت مستقر فقط. جميع البرامج والأدوات التي نستخدمها مجانية وسنساعد الطالب في تجهيزها في أول حصة." }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يحتاج ابني خبرة سابقة في البرمجة؟",
+          "acceptedAnswer": { "@type": "Answer", "text": "لا إطلاقاً. برامجنا مصممة للبدء من الصفر، ونحدد المستوى المناسب لكل طالب في جلسة تقييم مجانية قبل الانضمام." }
+        },
+        {
+          "@type": "Question",
+          "name": "ماذا لو تعارضت المواعيد مع المدرسة؟",
+          "acceptedAnswer": { "@type": "Answer", "text": "نوفر مجموعات مسائية وأخرى في عطلة نهاية الأسبوع، وجميع الحصص تُسجَّل حتى يستطيع الطالب مراجعة ما فاته في أي وقت." }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أتابع مستوى ابني وتقدمه؟",
+          "acceptedAnswer": { "@type": "Answer", "text": "يصلك تقرير مفصل عن تقدم الطالب كل أسبوعين، بالإضافة إلى اجتماع دوري مع المدرب ومعرض مشاريع في نهاية كل برنامج." }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يحصل الطالب على شهادة؟",
+          "acceptedAnswer": { "@type": "Answer", "text": "نعم، شهادة إتمام معتمدة من الأكاديمية بعد كل برنامج — والأهم: معرض مشاريع حقيقي منشور على الإنترنت يبقى مع الطالب." }
+        },
+        {
+          "@type": "Question",
+          "name": "بأي لغة يتم الشرح؟",
+          "acceptedAnswer": { "@type": "Answer", "text": "الشرح بالعربية بأسلوب مبسط، مع استخدام المصطلحات التقنية بالإنجليزية كما هي في سوق العمل — ليعتاد الطالب عليها من البداية." }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
